@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-
+import { useContext } from 'react';
+import { appContext } from '../context/Contestee';
 const USEEEE = () => {
     const [data,setdata] = useState();
     const [name,setname] = useState(window.innerHeight);
@@ -15,10 +16,15 @@ const USEEEE = () => {
       .then(response => response.json())
       .then(json => console.log(json))
      
-    })
+    });
+
+    const userdata = useContext(appContext);
+    console.log(userdata.age)
   return (
     <>
         <div>
+        <p>my name is {userdata.name}</p>
+        
             <button onClick={()=> setdata(1)}>Submit</button>
             <button onClick={()=> setdata(4)}>post</button>
             <button onClick={()=> setdata(3)}>click</button>
